@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if lang == 'pl' %}
+    <title>Zdjęcia z maseczkami</title>
+    {% elif lang == 'us' %}
+    <title>Pictures with masks</title>
+    {% endif %}
+
+    <link rel="shortcut icon" href="{{ url_for('static',filename='images/logo.ico') }}" />
+
+    <script src="https://kit.fontawesome.com/7e52d7f087.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css">
+
+    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
+</head>
+
+<body>
+
+    <main>
+        <div class="container">
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            {% if category == 'message' %}
+            <div class="alert alert-warning text-center top7" role="alert">
+                {% else %}
+                <div class="alert alert-{{ category }} text-center top7" role="alert">
+                    {% endif %}
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+
+                {% if lang == 'pl' %}
+                <div class="row justify-content-center">
+                    <div class="col-md-8 top10">
+                        <h6 class="text-justify blabla" style="color: white; ">
+                            Ważne, żeby zdjęcia były wykonane przodem do aparatu, a nie np. z profilu. Liczy się to,
+                            żeby
+                            cała
+                            twarz była widoczna na zdjęciu.
+                        </h6>
+                    </div>
+                    <div class="w-100"> </div>
+                </div>
+                <div class="row m-b-1 top7">
+                    <div class="col-md-6 offset-md-4">
+
+                        <form method=post style="display: table;" enctype=multipart/form-data>
+                            <input type=file class="font-weight-bold" style="color: white;" id="file" name=file[]
+                                multiple data-toggle="tooltip" data-placement="top"
+                                title="Jeśli nie możesz wysłać kilku plików na raz, wyślij je pojedynczo :)">
+                            <input type=submit class="btn btn-outline-info" hidden id="submit-but" value=Wyślij!>
+                        </form>
+                    </div>
+                </div>
+                <div class="w-100"></div>
+                <div class="row justify-content-center">
+                    <div class="col-md-8 text-center" id="preview">
+                    </div>
+                    <div class="col-md-8 top5">
+                        <h6 class="text-justify blabla" style="color: white; ">
+                            Aby wyrazić dobrowolną zgodę na przetwarzanie danych osobowych w sposób opisany na
+                            poprzedniej
+                            stronie, należy
+                            zaznaczyć odpowiednie, poniżej wskazane pole. Zgody na przetwarzanie danych osobowych
+                            w
+                            imieniu nieletnich mogą udzielić wyłącznie Rodzice lub prawni opiekunowie.
+                        </h6>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="form-check top10">
+                            <input class="form-check-input" type="checkbox" value="" id="check1">
+                            <label class="form-check-label" for="check1" style="color: white;">
+                                Wyrażam zgodę na przetwarzanie moich danych osobowych w postaci zdjęcia twarzy z
+                                maseczką i bez na potrzeby realizacji pracy dyplomowej pt. „System rozpoznawania osób na
+                                podstawie częściowo zakrytego obrazu twarzy”.
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center" style="margin-bottom: 100px;">
+                    <div class="w-100"></div>
+                    <div id="hidden_button" class="top5" style="display: none;">
+                        <div class="col md-8">
+                            <button class="btn btn-outline-info btn-lg" id="send-but">Wyślij</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="navbar fixed-bottom navbar-dark bg-dark navbar-expand-md">
+                    <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation"><span
+                            class="navbar-toggler-icon"></span></button>
+                    <a class="navbar-brand" href="http://weka.pwr.edu.pl/"><img
+                            src="{{ url_for('static',filename='images/pwr.png') }}" height=50
+                            class="d-inline-block mr-1 allign-bottom"></a>
+                    <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
+                        <ul class="navbar-nav nav-justified w-100">
+
+                            <li class="nav-item">
+                                <span class="fa-li"></span>
+                                <a class="nav-link" href="https://github.com/ciszko">GitHub
+
+                                    <i class="fab fa-github"></i>
+
+                                </a>
+                                </span>
+                            </li>
+                            <li class="nav-item">
+                                <span class="fa-li"></span>
+                                <a class="nav-link" href="mailto:marcinkalinski1997@gmail.com"">Email
+
+                            <i class=" far fa-envelope"></i></i>
+
+                                </a>
+                                </span>
+                            </li>
+                            <li class="nav-item dropup">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false"><span class="flag-icon flag-icon-pl"> </span> Polski</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="?lang=pl"><span class="flag-icon flag-icon-pl">
+                                        </span>
+                                        Polski</a>
+                                    <a class="dropdown-item" href="?lang=us"><span class="flag-icon flag-icon-us">
+                                        </span>
+                                        English</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                {% elif lang == 'us' %}
+                <div class="row justify-content-center">
+                    <div class="col-md-8 top10">
+                        <h6 class="text-justify blabla" style="color: white; ">
+                            It's important that the photos are taken facing the camera and not, for example, from a
+                            profile. It is essential that the whole face is visible in the picture.
+                        </h6>
+                    </div>
+                    <div class="w-100"> </div>
+                </div>
+                <div class="row m-b-1 top7">
+                    <div class="col-md-6 offset-md-4">
+
+                        <form method=post style="display: table;" enctype=multipart/form-data>
+                            <input type=file class="font-weight-bold" style="color: white;" id="file" name=file[]
+                                multiple data-toggle="tooltip" data-placement="top"
+                                title="If you cannot send several files at once, send them one at a time :)">
+                            <input type=submit class="btn btn-outline-info" hidden id="submit-but" value=Wyślij!>
+                        </form>
+                    </div>
+                </div>
+                <div class="w-100"></div>
+                <div class="row justify-content-center">
+                    <div class="col-md-8 text-center" id="preview">
+                    </div>
+                    <div class="col-md-8 top5">
+                        <h6 class="text-justify blabla" style="color: white; ">
+                            In order to give your voluntary consent to the processing of your personal data in the
+                            manner described on the previous page, please tick the appropriate box below. Only Parents
+                            or legal guardians may grant consent to the processing of personal data on behalf of minors.
+                        </h6>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="form-check top10">
+                            <input class="form-check-input" type="checkbox" value="" id="check1">
+                            <label class="form-check-label" for="check1" style="color: white;">
+                                I agree to the processing of my personal data in the form of a face photo with
+                                with and without a mask, for the purposes of the diploma thesis entitled "A system for
+                                recognizing people on the base of a partially covered face image."
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center" style="margin-bottom: 100px;">
+                    <div class="w-100"></div>
+                    <div id="hidden_button" class="top5" style="display: none;">
+                        <div class="col md-8">
+                            <button class="btn btn-outline-info btn-lg" id="send-but">Send</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="navbar fixed-bottom navbar-dark bg-dark navbar-expand-md">
+                    <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation"><span
+                            class="navbar-toggler-icon"></span></button>
+                    <a class="navbar-brand" href="http://weka.pwr.edu.pl/"><img
+                            src="{{ url_for('static',filename='images/pwr.png') }}" height=50
+                            class="d-inline-block mr-1 allign-bottom"></a>
+                    <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
+                        <ul class="navbar-nav nav-justified w-100">
+
+                            <li class="nav-item">
+                                <span class="fa-li"></span>
+                                <a class="nav-link" href="https://github.com/ciszko">GitHub
+
+                                    <i class="fab fa-github"></i>
+
+                                </a>
+                                </span>
+                            </li>
+                            <li class="nav-item">
+                                <span class="fa-li"></span>
+                                <a class="nav-link" href="mailto:marcinkalinski1997@gmail.com"">Email
+
+                            <i class=" far fa-envelope"></i></i>
+
+                                </a>
+                                </span>
+                            </li>
+                            <li class="nav-item dropup">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false"><span class="flag-icon flag-icon-us"> </span> English</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="?lang=pl"><span class="flag-icon flag-icon-pl">
+                                        </span>
+                                        Polski</a>
+                                    <a class="dropdown-item" href="?lang=us"><span class="flag-icon flag-icon-us">
+                                        </span>
+                                        English</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+
+
+
+
+</body>
+
+
+</html>

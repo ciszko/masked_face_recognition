@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if lang == 'pl' %}
+    <title>Zdjęcia z maseczkami</title>
+    {% elif lang == 'us' %}
+    <title>Pictures with masks</title>
+    {% endif %}
+    <link rel="shortcut icon" href="{{ url_for('static',filename='images/logo.ico') }}" />
+
+    <script src="https://kit.fontawesome.com/7e52d7f087.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css">
+
+</head>
+
+<body>
+
+    <main>
+        <div class="container">
+            {% if lang == 'pl' %}
+            <div class="row justify-content-center">
+                <div class="col-md6 top5">
+                    <h6 style="color: white;">
+                        <center>KLAUZULA INFORMACYJNA</center><br>
+                        <center>Mająca zastosowanie do przetwarzania danych biometrycznych w postaci zdjęcia twarzy
+                        </center><br>
+                        <strong>Tożsamość administratora</strong><br>
+                        Administratorem danych osobowych zbieranych na naszych stronach internetowych jest Politechnika
+                        Wrocławska, Wybrzeże Wyspiańskiego 27, 50-370 Wrocław. <br>
+                        <strong>Dane kontaktowe administratora</strong><br>
+                        Z administratorem można się skontaktować z wykorzystaniem danych umieszczonych na stronie
+                        <a href="//www.kssk.pwr.edu.pl/">//www.kssk.pwr.edu.pl/</a> lub pisemnie na adres siedziby
+                        administratora.<br>
+                        <strong>Dane kontaktowe inspektora ochrony danych osobowych</strong><br>
+                        Administrator wyznaczył osobę pełniącą zadania Administratora Bezpieczeństwa Informacji i
+                        Inspektora Ochrony Danych Osobowych (IOD), z którym można się kontaktować przez adres e-mail:
+                        iod@pwr.edu.pl. Z IOD można się kontaktować w sprawach dotyczących przetwarzania danych
+                        osobowych oraz korzystania z praw związanych z przetwarzaniem danych.<br>
+                        <strong>Cele przetwarzania i podstawa prawna</strong><br>
+                        Wasze dane gromadzimy i będziemy przetwarzać jedynie w celu badań przeprowadzonych na potrzeby
+                        pracy inżynierskiej pt .”System rozpoznawania osób na podstawie częściowo zakrytego obrazu
+                        twarzy”.<br>
+                        <strong>Odbiorcy danych lub kategorie odbiorców danych</strong><br>
+                        Państwa dane osobowe w postaci zdjęć obrazu twarzy z maseczką (i bez) będą przetwarzane przez
+                        upoważnionych pracowników i współpracowników Politechniki Wrocławskiej. Mogą też być
+                        przetwarzane przez upoważnionych studentów realizujących swoją pracę dyplomową pn. „System
+                        rozpoznawania osób na podstawie częściowo zakrytego obrazu twarzy”. Nie udostępnimy ich jednak
+                        nikomu w żadnych innych celach niż te, dla których dane są zbierane (zwłaszcza nie udostępnimy
+                        takich danych w celach komercyjnych).
+                        Zastrzegamy tez że w niezbędnych przypadkach dane osobowe (w minimalnym i tylko niezbędnym
+                        zakresie) udostępnione audytorom i podmiotom kontrolującym działalność administratora na
+                        podstawie prawa bądź umów – i tylko w celu przeprowadzenia kontroli.<br>
+                        <strong>Okres przechowywania danych</strong><br>
+                        Dane będą przetwarzane od ich podania do chwili wycofania zgody na ich przetwarzanie. Zakończymy
+                        ich przetwarzanie nie później niż 31 marca 2021r. W przypadkach gdy tego wymagać będą przepisy
+                        Wasze dane osobowe możemy przechować w celach archiwalnych.<br>
+                        <strong>Prawa podmiotów danych</strong><br>
+                        Posiadacie prawo dostępu do swoich danych oraz ich sprostowania a także prawa do: usunięcia,
+                        ograniczenia przetwarzania i przenoszenia danych.
+                        Gdyby zgoda byłaby jedyna przesłanką przetwarzania danych przez administratora, możecie tez
+                        zgodę wycofać zwracając się wprost do administratora kontaktując się w podany na wstępie sposób.
+                        Cofnięcie zgody nie neguje legalności operacji na danych, których dokonaliśmy przed jej
+                        cofnięciem.<br>
+                        <strong>Prawo wniesienia skargi do organu nadzorczego</strong><br>
+                        Przysługuje Państwu prawo wniesienia skargi do organu nadzorczego zajmującego się ochroną danych
+                        osobowych w państwie członkowskim Waszego zwykłego pobytu, miejsca pracy lub miejsca popełnienia
+                        domniemanego naruszenia. W RP jest to Prezes Urzędu Ochrony Danych Osobowych (PUODO), którego
+                        Biuro mieści się pod adresem: Stawki 2, 00-193 Warszawa.
+                    </h6>
+                    <div class="w-100"></div>
+                    <div class="row justify-content-center">
+                        <a class="btn btn btn-outline-info btn-lg" style="margin-bottom: 100px;"
+                            href="{{ url_for('form', lang=lang) }}" role="button">Dalej <i
+                                class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="w-100">
+                </div>
+            </div>
+
+            <div class="navbar fixed-bottom navbar-dark bg-dark navbar-expand-md">
+                <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <a class="navbar-brand" href="http://weka.pwr.edu.pl/"><img
+                        src="{{ url_for('static',filename='images/pwr.png') }}" height=50
+                        class="d-inline-block mr-1 allign-bottom"></a>
+                <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
+                    <ul class="navbar-nav nav-justified w-100">
+
+                        <li class="nav-item">
+                            <span class="fa-li"></span>
+                            <a class="nav-link" href="https://github.com/ciszko">GitHub
+
+                                <i class="fab fa-github"></i>
+
+                            </a>
+                            </span>
+                        </li>
+
+                        <li class="nav-item">
+                            <span class="fa-li"></span>
+                            <a class="nav-link" href="mailto:marcinkalinski1997@gmail.com"">Email
+
+                            <i class=" far fa-envelope"></i></i>
+
+                            </a>
+                            </span>
+                        </li>
+                        <li class="nav-item dropup">
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false"><span class="flag-icon flag-icon-pl"> </span> Polski</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="?lang=pl"><span class="flag-icon flag-icon-pl"> </span>
+                                    Polski</a>
+                                <a class="dropdown-item" href="?lang=us"><span class="flag-icon flag-icon-us"> </span>
+                                    English</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- ##################################### ENGLISH ##################################### -->
+            {% elif lang == 'us' %}
+            <div class="row justify-content-center">
+                <div class="col-md6 top5">
+                    <h6 style="color: white;">
+                        <center>INFORMATION CLAUSE</center><br>
+                        <center>Applicable to the processing of biometric data in the form of a facial image
+                        </center><br>
+                        <strong>Administrator's identity</strong><br>
+                        The administrator of personal data collected on our websites is the Wrocław University of
+                        Science and Technology, Wybrzeże Wyspiańskiego 27, 50-370 Wrocław. <br>
+                        <strong>Administrator contact details</strong><br>
+                        The administrator can be contacted using the data on the website
+                        <a href="//www.kssk.pwr.edu.pl/">//www.kssk.pwr.edu.pl/</a> or in writing to the address of the
+                        administrator's
+                        office.<br>
+                        <strong>Contact details of the data protection officer</strong><br>
+                        The Administrator appointed a person to act as Information Security Administrator and
+                        The Data Protection Officer (DPO), who can be contacted by e-mail:
+                        iod@pwr.edu.pl. The DPO can be contacted in matters concerning data processing
+                        The Commission will be responsible for the implementation of this Regulation and for the
+                        exercise of the rights of the data processing.<br>
+                        <strong>Processing objectives and legal basis</strong><br>
+                        We collect and process your data only for the purpose of research conducted for the purposes of
+                        engineering work entitled: "Person
+                        recognition on the basis of the partial visible face".<br>
+                        <strong>Recipients of data or categories of recipients of data</strong> <br>
+                        Your personal data in the form of facial images with (and without) a mask will be processed
+                        by authorised employees and associates of theWrocław University of
+                        Science and Technology. They may also be
+                        processed by authorized students carrying out their thesis entitled "Person recognition on the
+                        basis of the partial visible face". However, we will not make them
+                        available
+                        to anyone for any purpose other than that for which the data is collected (in particular, we
+                        will not make available
+                        such data for commercial purposes).
+                        We also reserve the right to request personal data (in the minimum and only necessary cases
+                        to the extent that they are made available to auditors and entities controlling the
+                        activities of the administrator for
+                        under the law or contracts - and only for the purpose of inspection.<br>
+                        <strong>Data storage period</strong><br>
+                        The data will be processed from the moment of their submission until the withdrawal of
+                        consent to their processing. We will finish .
+                        their processing not later than 31 March 2021. In cases where the regulations require it
+                        We may store your personal data for archival purposes.<br>
+                        <strong>The rights of data subjects</strong><br>
+                        You have the right to access and correct your data and the right to: deletion,
+                        limitations on data processing and transfer.
+                        If consent would be the only reason for the controller to process data - you can also
+                        withdraw consent by addressing the administrator directly by contacting him/her in the
+                        manner specified in the introduction.
+                        Withdrawal of consent does not deny the legitimacy of operations on data which we have
+                        performed before its
+                        revocation.<br>
+                        <strong>The right to complain to the supervisory authority</strong><br>
+                        You have the right to complain to the data protection supervisory authority
+                        the Member State of your habitual residence, place of work or place of performance
+                        the alleged infringement. In Poland, it is the President of the Office for the Protection of
+                        Personal Data (PUODO), whose
+                        The office is located at the address: Stawki 2, 00-193 Warsaw.
+
+                    </h6>
+                    <div class="w-100"></div>
+                    <div class="row justify-content-center">
+                        <a class="btn btn btn-outline-info btn-lg" style="margin-bottom: 100px;"
+                            href="{{ url_for('form', lang=lang) }}" role="button">Continue <i
+                                class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="w-100">
+                </div>
+            </div>
+
+            <div class="navbar fixed-bottom navbar-dark bg-dark navbar-expand-md">
+                <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <a class="navbar-brand" href="http://weka.pwr.edu.pl/"><img
+                        src="{{ url_for('static',filename='images/pwr.png') }}" height=50
+                        class="d-inline-block mr-1 allign-bottom"></a>
+                <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
+                    <ul class="navbar-nav nav-justified w-100">
+
+                        <li class="nav-item">
+                            <span class="fa-li"></span>
+                            <a class="nav-link" href="https://github.com/ciszko">GitHub
+
+                                <i class="fab fa-github"></i>
+
+                            </a>
+                            </span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="fa-li"></span>
+                            <a class="nav-link" href="mailto:marcinkalinski1997@gmail.com"">Email
+
+                            <i class=" far fa-envelope"></i></i>
+
+                            </a>
+                            </span>
+                        </li>
+                        <li class="nav-item dropup">
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false"><span class="flag-icon flag-icon-us"> </span> English</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="?lang=pl"><span class="flag-icon flag-icon-pl"> </span>
+                                    Polski</a>
+                                <a class="dropdown-item" href="?lang=us"><span class="flag-icon flag-icon-us"> </span>
+                                    English</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            {% endif %}
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+
+
+
+
+</body>
+
+</html>

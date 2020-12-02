@@ -1,0 +1,43 @@
+html, body{
+    background-color: #312D3E;
+    font-family: myfont;
+    font-size: 21px;
+}
+
+.m50{
+    margin-bottom: 100px;
+}
+
+.top5 { margin-top:5%; }
+.top7 { margin-top:7%; }
+.top10 { margin-top:10%; }
+.top11 { margin-top: 11%;}
+.top15 { margin-top:15%; }
+.top17 { margin-top:17%; }
+.top30 { margin-top:30%; }
+
+.blabla {
+    line-height:150% !important;
+}
+
+.log-img {
+    max-height: 50px;
+  }
+
+  .p0 {
+    padding: 0 !important;
+  }
+
+  .dropdown-menu {
+    left: 50%;
+    right: auto;
+    text-align: center;
+    transform: translate(-50%, 0);
+  }
+
+  @font-face {
+    font-family: "myfont";
+    src: url("./../Sansation_Regular.woff") format('woff');
+}
+
+

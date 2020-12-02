@@ -1,0 +1,24 @@
+{
+    "thanks": [
+        {
+            "type": "gif",
+            "url": "images/gif1.gif"
+        },
+        {
+            "type": "gif",
+            "url": "images/gif2.gif"
+        },
+        {
+            "type": "gif",
+            "url": "images/gif3.gif"
+        },
+        {
+            "type": "gif",
+            "url": "images/gif4.gif"
+        },
+        {
+            "type": "gif",
+            "url": "images/gif5.gif"
+        }
+    ]
+}

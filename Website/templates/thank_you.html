@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if lang == 'pl' %}
+    <title>Zdjęcia z maseczkami</title>
+    {% elif lang == 'us' %}
+    <title>Pictures with masks</title>
+    {% endif %}
+    <link rel="shortcut icon" href="{{ url_for('static',filename='images/logo.ico') }}" />
+
+    <script src="https://kit.fontawesome.com/7e52d7f087.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}">
+
+</head>
+
+<body>
+
+    <main>
+        <div class="container">
+
+            <div class="row justify-content-center">
+                <div class="col-md6 top10">
+                    {% if lang == 'pl' %}
+                    <h6 style="color: white;">Bardzo dziękuję za pomoc!</h6>
+                    {% elif lang == 'us' %}
+                    <h6 style="color: white;">Thank you very much for your help!</h6>
+                    {% endif %}
+                </div>
+                <div class="w-100">
+                </div>
+                <div class="col-md-6 top5">
+                    {% if data.type == "video" %}
+                    <iframe style="height: 50vh; width:100%; margin-bottom: 100px;" src="{{ data['url'] }}">
+                    </iframe>
+                    {% elif data.type == "gif" %}
+                    <img class="mx-auto d-block" style="margin-bottom: 100px;"
+                        src="{{ url_for('static', filename=data['url']) }}">
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="navbar fixed-bottom navbar-dark bg-dark navbar-expand-md">
+                <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <a class="navbar-brand" href="http://weka.pwr.edu.pl/"><img
+                        src="{{ url_for('static',filename='images/pwr.png') }}" height=50
+                        class="d-inline-block mr-1 allign-bottom"></a>
+                <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
+                    <ul class="navbar-nav nav-justified w-100">
+
+                        <li class="nav-item">
+                            <span class="fa-li"></span>
+                            <a class="nav-link" href="https://github.com/ciszko">GitHub
+
+                                <i class="fab fa-github"></i>
+
+                            </a>
+                            </span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="fa-li"></span>
+                            <a class="nav-link" href="mailto:marcinkalinski1997@gmail.com"">Email
+
+                            <i class=" far fa-envelope"></i></i>
+
+                            </a>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+
+
+
+
+</body>
+
+</html>
