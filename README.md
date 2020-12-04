@@ -15,6 +15,10 @@ This directory includes all of the necessary files for the Flask application. Th
 This picture represents the results based on the single image.
 ![alt text](./Other/recognize_image.png "Recognize image")
 
-Example results based on the video
+Example results based on the video(Samsung Galaxy S9)
+
+![alt text](./Other/recognize_video2.gif "Recognize image")
+
+Example results based on the video (GoPro)
 
 ![alt text](./Other/recognize_video.gif "Recognize image")
